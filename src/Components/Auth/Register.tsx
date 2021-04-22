@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 
 
-const Register = (props: string) => {
+const Register = (props: string | Boolean) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] =useState('');
