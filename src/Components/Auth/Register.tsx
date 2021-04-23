@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 
-
-const Register = (props: string | Boolean) => {
+const Register: FC = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [firstName, setFirstName] =useState('');
+    const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [role, setRole] = useState('');
-    const [visible, setVisible] =useState(false);
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
         fetch('http://localhost:3000/user/register', {
             method: 'POST',
             body: JSON.stringify({
@@ -34,11 +32,6 @@ const Register = (props: string | Boolean) => {
             setFirstName('');
             setLastName('');
             setRole('');
-            if (!data.sessionToken) {
-                setVisible(true);
-            } else {
-                props.updateToken(data.sessionToken, data.user.firstName)
-            }
         })
         .catch((err) => console.log(err));
     };
@@ -90,3 +83,10 @@ const Register = (props: string | Boolean) => {
 }
 
 export default Register;
+// export interface Users{
+//     email: string;
+//     password: string;
+//     firstName: string;
+//     lastName: string;
+//     role: string;
+// }

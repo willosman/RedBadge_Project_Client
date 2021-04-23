@@ -1,11 +1,12 @@
 import React from 'react';
+import Auth from './Components/Auth/Index'
 import './App.css';
 
 
 function App() {
   return (
     <div>
-      <p>hello</p>
+      <Auth />
     </div>
   );
 }

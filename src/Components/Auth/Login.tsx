@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import { FormGroup, Button, Label, Input, Form } from 'reactstrap';
 
 
-const Login = (props: String | Boolean) => {
+const Login: FC = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [visibile, setVisible] = useState('');
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
         fetch('http://localhost:3000/user/login', {
             method: 'POST',
             body: JSON.stringify({
@@ -22,11 +21,6 @@ const Login = (props: String | Boolean) => {
         .then((data) => {
             setPassword('');
             setEmail('');
-            if (!data.sessionToken) {
-                setVisible(true);
-            } else {
-               props.updateToken(data.sessionToken, data.user.firstName);
-            }
         });
     };
 
